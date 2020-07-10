@@ -42,7 +42,6 @@ const userRoute = require('./routes/routeUsers.js')
 app.use('/users', userRoute)
 // app.use('/sujets', sujetRoute)
 
-
 module.exports = {
   path: '/api',
   handler: app

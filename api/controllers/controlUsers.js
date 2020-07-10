@@ -8,13 +8,39 @@ const Users = require('../models/users')
 const controller = {}
 
 controller.register = async function (req, res) {
-  const pseudo = req.body.login
-  const email = req.body.email
-  const pass = req.body.pass
-  const verifLogin = await Users.findOne({ login: pseudo })
-  res.json({
-    test: verifLogin
-  })
+  const verifLogin = await Users.findOne({ login: req.body.login })
+  if (!verifLogin) {
+    const verifEmail = await Users.findOne({ login: req.body.email })
+    if (!verifEmail) {
+      try{
+        const user = await Users.create({
+          login: req.body.login,
+          email: req.body.email,
+          pass: req.body.pass
+        })
+        res.json({
+          statut: 'OK'
+        })
+      }catch(e){
+        res.json({
+          statut: 'KO',
+          erreur: error
+          
+        })
+      }
+      
+    } else {
+      res.json({
+        statut: 'KO',
+        erreur: 'email'
+      })
+    }
+  } else {
+    res.json({
+      statut: 'KO',
+      erreur: 'login'
+    })
+  }
 }
 
 module.exports = controller
