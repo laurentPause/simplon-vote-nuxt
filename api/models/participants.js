@@ -28,4 +28,4 @@ const participantsSchema = mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('participants', participantsSchema)
+module.exports = mongoose.models.participantsSchema || mongoose.model('participants', participantsSchema)

@@ -13,7 +13,7 @@ controller.register = async function (req, res) {
   const pass = req.body.pass
   const verifLogin = await Users.findOne({ login: pseudo })
   res.json({
-    test: 'test'
+    test: verifLogin
   })
 }
 

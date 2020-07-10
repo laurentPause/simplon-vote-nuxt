@@ -56,4 +56,4 @@ const sujetsSchema = mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('sujets', sujetsSchema)
+module.exports = mongoose.models.sujetsSchema || mongoose.model('sujets', sujetsSchema)

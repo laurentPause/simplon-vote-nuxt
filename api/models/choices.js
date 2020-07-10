@@ -32,4 +32,4 @@ const choicesSchema = mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('choices', choicesSchema)
+module.exports = mongoose.models.choicesSchema || mongoose.model('choices', choicesSchema)
