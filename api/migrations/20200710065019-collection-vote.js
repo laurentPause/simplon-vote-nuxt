@@ -10,7 +10,7 @@ module.exports = {
               bsonType: 'objectId'
             },
             vote: {
-              // index du choices
+              // resultat du vote
               bsonType: 'array'
             }
           }

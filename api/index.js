@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
 // eslint-disable-next-line no-unused-vars
@@ -24,21 +26,22 @@ mongoose.connect(mongoDB, {
 /**
  * Express app
  */
-
+// const userRoute = require('./routes/users.js')
 const app = express()
-
+app.use(express.json())
+app.use(express.urlencoded({
+  extended: true
+}))
 /**
  * Routes
  */
-const userRoute = require('./routes/users')
-const sujetRoute = require('./routes/sujets')
 
+// console.log('route :', sujetRoute)
+const userRoute = require('./routes/routeUsers.js')
+// const sujetRoute = require('./routes/routeSujets')
 app.use('/users', userRoute)
-app.use('/sujets', sujetRoute)
+// app.use('/sujets', sujetRoute)
 
-app.get('/echo/:what', (req, res) => {
-  res.json(req.params)
-})
 
 module.exports = {
   path: '/api',

@@ -66,6 +66,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'FormRegister',
   data () {
@@ -80,9 +82,14 @@ export default {
     }
   },
   methods: {
-    onSubmit (evt) {
+    async onSubmit (evt) {
       evt.preventDefault()
-      alert(JSON.stringify(this.form))
+      await axios.post('http://localhost:3000/api/users/register', this.form)
+        .then((response) => {
+          console.warn(response)
+        }, (error) => {
+          console.warn(error)
+        })
     },
     onReset (evt) {
       evt.preventDefault()

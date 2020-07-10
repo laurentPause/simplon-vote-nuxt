@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <FormRegister class="bg-info text-light p-2" />
   </div>
 </template>

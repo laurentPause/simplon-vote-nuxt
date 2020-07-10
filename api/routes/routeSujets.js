@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const sujets = require('../controllers/sujets.js')
+const sujets = require('../controllers/controlSujets.js')
 
 /**
  * Routes Sujets
