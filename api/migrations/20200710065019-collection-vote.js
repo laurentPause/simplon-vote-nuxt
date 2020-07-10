@@ -11,7 +11,7 @@ module.exports = {
             },
             vote: {
               // index du choices
-              bsonType: 'int'
+              bsonType: 'array'
             }
           }
         }

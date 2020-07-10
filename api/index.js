@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+// eslint-disable-next-line no-unused-vars
 const dotenv = require('dotenv').config()
 
 /**
@@ -19,8 +20,10 @@ mongoose.connect(mongoDB, {
   e =>
     console.error(e)
 )
-// Get the default connection
-const db = mongoose.connection
+
+/**
+ * Express app
+ */
 
 const app = express()
 
