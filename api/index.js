@@ -1,8 +1,10 @@
 const express = require('express')
-// Import the mongoose module
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 
+/**
+ * Database
+ */
 // Set up default mongoose connection
 const mongoDB = process.env.MONGO_URL + process.env.MONGO_DB
 mongoose.connect(mongoDB, {
@@ -17,11 +19,19 @@ mongoose.connect(mongoDB, {
   e =>
     console.error(e)
 )
-
 // Get the default connection
 const db = mongoose.connection
 
 const app = express()
+
+/**
+ * Routes
+ */
+const userRoute = require('./routes/users')
+const sujetRoute = require('./routes/sujets')
+
+app.use('/users', userRoute)
+app.use('/sujets', sujetRoute)
 
 app.get('/echo/:what', (req, res) => {
   res.json(req.params)
