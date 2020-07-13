@@ -10,7 +10,7 @@ const controller = {}
 controller.register = async function (req, res) {
   const verifLogin = await Users.findOne({ login: req.body.login })
   if (!verifLogin) {
-    const verifEmail = await Users.findOne({ login: req.body.email })
+    const verifEmail = await Users.findOne({ email: req.body.email })
     if (!verifEmail) {
       try {
         const user = await Users.create({
