@@ -12,23 +12,22 @@ controller.register = async function (req, res) {
   if (!verifLogin) {
     const verifEmail = await Users.findOne({ login: req.body.email })
     if (!verifEmail) {
-      try{
+      try {
         const user = await Users.create({
           login: req.body.login,
           email: req.body.email,
-          pass: req.body.pass
+          password: req.body.pass
         })
         res.json({
           statut: 'OK'
         })
-      }catch(e){
+      } catch (e) {
         res.json({
           statut: 'KO',
-          erreur: error
-          
+          erreur: e
+
         })
       }
-      
     } else {
       res.json({
         statut: 'KO',
